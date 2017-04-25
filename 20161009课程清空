@@ -1,0 +1,97 @@
+# 课程清空
+* 查看当前所有虚拟机的域名情况
+[root@foundation0 ~]# virsh list --all
+* 删除域名
+[root@foundation0 ~]# virsh undefine server
+
+```shell
+[kiosk@foundation0 Desktop]$ rht-vmctl start server
+Starting server.
+error: failed to get domain 'server'
+error: Domain not found: no domain with matching name 'server'
+[kiosk@foundation0 Desktop]$ rht-vmctl fullreset server
+Are you sure you want to full reset server? (y/n) y
+Powering off server.
+Full resetting server.
+Downloading virtual machine definition file for server.
+######################################################################## 100.0%
+Downloading virtual machine disk image up210-server-vda.qcow2
+######################################################################## 100.0%
+Creating virtual machine disk overlay for up210-server-vda.qcow2
+Starting server.
+error: failed to get domain 'server'
+error: Domain not found: no domain with matching name 'server'
+[kiosk@foundation0 Desktop]$ 
+[kiosk@foundation0 Desktop]$ su -
+Password: 
+Last login: Sun Oct  9 11:59:11 CST 2016 on pts/3
+[root@foundation0 ~]# virsh list --all
+ Id    Name                           State
+----------------------------------------------------
+ 4     classroom                      running
+ 5     client                         running
+ -     servera                        shut off
+ -     serverb                        shut off
+ -     serverc                        shut off
+ -     serverd                        shut off
+ -     servere                        shut off
+ -     serverf                        shut off
+ -     serverg                        shut off
+ -     serverh                        shut off
+ -     serveri                        shut off
+ -     serverj                        shut off
+ -     sharestorage                   shut off
+
+[root@foundation0 ~]# virsh --help |grep unde
+    undefine                       undefine a domain
+    iface-unbridge                 undefine a bridge device after detaching its slave device
+    iface-undefine                 undefine a physical host interface (remove it from configuration)
+    nwfilter-undefine              undefine a network filter
+    net-undefine                   undefine a persistent network
+    secret-undefine                undefine a secret
+    pool-undefine                  undefine an inactive pool
+[root@foundation0 ~]# for i in {a..j} ; do echo $i ; done
+a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+[root@foundation0 ~]# for i in {a..j} ; do virsh undefine server$i ; done
+Domain servera has been undefined
+
+Domain serverb has been undefined
+
+Domain serverc has been undefined
+
+Domain serverd has been undefined
+
+Domain servere has been undefined
+
+Domain serverf has been undefined
+
+Domain serverg has been undefined
+
+Domain serverh has been undefined
+
+Domain serveri has been undefined
+
+Domain serverj has been undefined
+
+[root@foundation0 ~]# virsh list --all
+ Id    Name                           State
+----------------------------------------------------
+ 4     classroom                      running
+ 5     client                         running
+ -     sharestorage                   shut off
+
+[root@foundation0 ~]# exit
+logout
+[kiosk@foundation0 Desktop]$ rht-vmctl start server
+Starting server.
+```
+
