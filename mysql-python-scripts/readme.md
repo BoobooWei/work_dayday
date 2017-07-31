@@ -49,7 +49,7 @@
 
 6. 2binlogtosql.py
 
-该脚本将sql保存在数据中个，如下所示：
+该脚本将sql保存在数据库中，如下所示：
 
 ```shell
 mysql> select * from binlogtosql limit 3\G;
